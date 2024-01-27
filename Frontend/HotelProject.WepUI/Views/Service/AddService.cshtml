@@ -1,0 +1,49 @@
+﻿@model CreateServiceDto
+@{
+    ViewData["Title"] = "AddService";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+
+
+<form method="post">
+    <label>İkon</label>
+    <input type="text" asp-for="ServiceIcon" class="form-control" />
+    <span asp-validation-for="ServiceIcon" class="text-danger"></span>
+    <br />
+
+    <label>Hizmet Başlığı </label>
+    <input type="text" asp-for="Title" class="form-control" />
+    <span asp-validation-for="Title" class="text-danger"></span>
+    <br />
+
+    <label>Açıklama</label>
+    <input type="text" asp-for="Description" class="form-control" />
+    <span asp-validation-for="Description" class="text-danger"></span>
+    <br />
+
+    
+
+    <button class="btn mb-1 btn-rounded btn-outline-info">Hizmet Ekle</button>
+</form>
+<script>
+    // Formu seç
+    var form = document.querySelector("form");
+    // Form gönderildiğinde çalışacak bir fonksiyon tanımla
+    form.addEventListener("submit", function(event) {
+        // Alanları seç
+        var icon = document.querySelector("[asp-for='ServiceIcon']");
+        var title = document.querySelector("[asp-for='Title']");
+        var description = document.querySelector("[asp-for='Description']");
+        // Alanların boş olup olmadığını kontrol et
+        if (icon.value == "" || title.value == "" || description.value == "") {
+            // Boşsa, uyarı mesajı göster ve formu göndermeyi iptal et
+            alert("Lütfen tüm alanları doldurunuz.");
+            event.preventDefault();
+        }
+    });
+</script>
+
+
+
+
